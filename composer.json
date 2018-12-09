@@ -2,7 +2,7 @@
   "name": "josephfusco/remember-me",
   "type": "wordpress-plugin",
   "license": "GPL-2.0-or-later",
-  "description": "Plays the chorus of Remember Me from Disney's Coco everytime you check Remember Me on wp-admin.",
+  "description": "Plays the chorus of Remember Me from Disney's Coco everytime you check Remember Me on the WordPress login page.",
   "keywords": [
     "wordpress"
   ],

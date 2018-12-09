@@ -6,10 +6,11 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Remember Me
- * Description:       Plays the chorus of Remember Me from Disney's Coco everytime you check Remember Me on wp-admin.
+ * Plugin URI:        https://github.com/josephfusco/remember-me
+ * Description:       Plays the chorus of Remember Me from Disney's Coco everytime you check Remember Me on the WordPress login page.
  * Version:           1.0.0
  * Author:            Joseph Fusco
- * Author URI:        https://josephfus.co/
+ * Author URI:        https://josephfus.co
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       remember-me

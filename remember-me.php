@@ -8,7 +8,7 @@
  * Plugin Name:       Remember Me
  * Plugin URI:        https://github.com/josephfusco/remember-me
  * Description:       Plays the chorus of Remember Me from Disney's Coco everytime you check Remember Me on the WordPress login page.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Joseph Fusco
  * Author URI:        https://josephfus.co
  * License:           GPL-2.0+
@@ -25,12 +25,12 @@ defined( 'WPINC' ) || die();
  * Enqueue the plugin's scripts.
  */
 function enqueue() {
-	wp_enqueue_script( 'remember-me', plugins_url( 'assets/scripts/remember-me.js', __FILE__ ), [], '1.0.0', true );
+	wp_enqueue_script( 'remember-me', plugins_url( 'assets/scripts/remember-me.js', __FILE__ ), [], '1.0.1', true );
 }
 add_action( 'login_enqueue_scripts', 'RememberMe\enqueue' );
 
 /**
- * Emved the audio on the login page.
+ * Load the audio on the login page.
  */
 function audio() {
 	?>

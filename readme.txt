@@ -8,10 +8,10 @@ Stable tag: trunk
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
-Plays the chorus of Remember Me from Disney\'s Coco everytime you check Remember Me on the WordPress login page.
+Plays the chorus of Remember Me from Disney's Coco everytime you check Remember Me on the WordPress login page.
 
 == Description ==
-Plays the chorus of Remember Me from Disney\'s Coco everytime you check Remember Me on the WordPress login page.
+Plays the chorus of Remember Me from Disney's Coco everytime you check Remember Me on the WordPress login page.
 
 Remember Me © 2017 Walt Disney Records / Pixar. Its use in this plugin qualifies as fair use under US copyright law. https://www.copyright.gov/fair-use/more-info.html
 
@@ -27,5 +27,8 @@ No. Its use in this plugin qualifies as fair use under US copyright law.
 https://www.copyright.gov/fair-use/more-info.html
 
 == Changelog ==
+= 1.0.1 =
+* Fix readme.
+
 = 1.0.0 =
 * Initial release of Remember Me.

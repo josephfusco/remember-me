@@ -2,7 +2,7 @@
 Contributors: JoeFusco
 Tags: login
 Requires at least: 4.8 or higher
-Tested up to: 5.0
+Tested up to: 6.0.2
 Requires PHP: 5.4
 Stable tag: trunk
 License: GPL-2.0+

@@ -27,7 +27,9 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Create index.html
-        run: touch public/index.html
+        run: |
+          mkdir public
+          touch public/index.html
 
       - name: Update index.html
         run: |

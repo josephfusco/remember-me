@@ -1,0 +1,63 @@
+name: View Changes in WordPress
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php_version: [7.4, 8.0]
+        wordpress_version: [5.8, 5.9]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.5.0
+        with:
+          node-version: '18.x'
+
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Plugin
+        run: npm run build
+
+      - name: Create index.html
+        run: |
+          echo "<!DOCTYPE html>
+          <html>
+            <head>
+              <style>
+                body, html, iframe {
+                  margin: 0;
+                  height: 100%;
+                  width: 100%;
+                  border: none;
+                }
+              </style>
+            </head>
+            <body>
+              <iframe src=\"https://playground.wordpress.net/remote.html?plugin=.&php=${{ matrix.php_version }}&wp=${{ matrix.wordpress_version }}\"></iframe>
+            </body>
+          </html>" > public/index.html
+
+      - name: Create Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: wordpress-plugin
+          path: public

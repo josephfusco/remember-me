@@ -62,24 +62,24 @@ jobs:
           script: |
             const artifactURL = `https://github.com/${{ github.repository }}/blob/${{ github.sha }}/public/index.html`;
             const pullRequestNumber = context.payload.pull_request.number;
-            const octokit = github.getOctokit(context.repo.token);
+            const octokit = getOctokit(context.repo.token);
             const { data: comments } = await octokit.rest.issues.listComments({
-              owner: github.context.repo.owner,
-              repo: github.context.repo.repo,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
               issue_number: pullRequestNumber
             });
             const workflowComment = comments.find(comment => comment.user.login === 'github-actions[bot]' && comment.body.includes('The artifact is available to view as a webpage'));
             if (workflowComment) {
               await octokit.rest.issues.updateComment({
-                owner: github.context.repo.owner,
-                repo: github.context.repo.repo,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
                 comment_id: workflowComment.id,
                 body: `The artifact is available to view as a webpage [here](${artifactURL}).`
               });
             } else {
               await octokit.rest.issues.createComment({
-                owner: github.context.repo.owner,
-                repo: github.context.repo.repo,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
                 issue_number: pullRequestNumber,
                 body: `The artifact is available to view as a webpage [here](${artifactURL}).`
               });

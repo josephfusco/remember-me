@@ -26,6 +26,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      - name: Install @actions/github
+        run: npm install @actions/github
+
       - name: Create index.html
         run: |
           mkdir public

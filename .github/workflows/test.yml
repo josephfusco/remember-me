@@ -60,6 +60,8 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
+            const { getOctokit } = require('@actions/github');
+
             const artifactURL = `https://github.com/${{ github.repository }}/blob/${{ github.sha }}/public/index.html`;
             const pullRequestNumber = context.payload.pull_request.number;
             const octokit = getOctokit(context.repo.token);

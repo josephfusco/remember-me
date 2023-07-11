@@ -26,12 +26,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Plugin
-        run: npm run public
-
       - name: Create index.html
         run: |
           echo "<!DOCTYPE html>

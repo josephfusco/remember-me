@@ -27,6 +27,9 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Create index.html
+        run: touch public/index.html
+
+      - name: Update index.html
         run: |
           echo "<!DOCTYPE html>
             <html>
@@ -43,7 +46,7 @@ jobs:
             <body>
               <iframe src=\"https://playground.wordpress.net/remote.html?plugin=${{ github.repository }}.php\"></iframe>
             </body>
-          </html>" > build/index.html
+          </html>" > public/index.html
 
       - name: Create Artifact
         uses: actions/upload-artifact@v2.2.4
@@ -55,7 +58,7 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
-            const artifactURL = `https://github.com/${{ github.repository }}/blob/${{ github.sha }}/build/index.html`;
+            const artifactURL = `https://github.com/${{ github.repository }}/blob/${{ github.sha }}/public/index.html`;
             const pullRequestNumber = github.context.payload.pull_request.number;
             const octokit = github.getOctokit(context.repo.token);
             const { data: comments } = await octokit.rest.issues.listComments({

@@ -61,7 +61,7 @@ jobs:
         with:
           script: |
             const artifactURL = `https://github.com/${{ github.repository }}/blob/${{ github.sha }}/public/index.html`;
-            const pullRequestNumber = github.context.payload.pull_request.number;
+            const pullRequestNumber = context.payload.pull_request.number;
             const octokit = github.getOctokit(context.repo.token);
             const { data: comments } = await octokit.rest.issues.listComments({
               owner: github.context.repo.owner,

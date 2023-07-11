@@ -1,9 +1,9 @@
 name: View Changes in WordPress
 
 on:
-  push:
+  pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2.5.0
         with:
-          node-version: '14.x'
+          node-version: '18.x'
 
       - name: Cache Dependencies
         uses: actions/cache@v2
@@ -29,8 +29,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Create Build Directory
-        run: mkdir build
+      - name: Build Plugin
+        run: npm run public
 
       - name: Create index.html
         run: |
@@ -55,7 +55,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.4
         with:
           name: wordpress-plugin
-          path: build
+          path: public
 
       - name: Comment on Pull Request
         uses: actions/github-script@v5

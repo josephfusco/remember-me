@@ -58,7 +58,7 @@ jobs:
       - name: Create Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: wordpress-plugin
+          name: wordpress-playground
           path: public
 
       - name: Comment on Pull Request

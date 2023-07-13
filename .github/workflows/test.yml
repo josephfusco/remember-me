@@ -1,3 +1,9 @@
+permissions:
+  contents: read
+  pages: write
+  deployments: write
+  id-token: write
+
 name: View Changes in WordPress
 
 on:

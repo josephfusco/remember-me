@@ -60,7 +60,7 @@ jobs:
             <body>
               <iframe src=\"https://playground.wordpress.net/remote.html?plugin=${{ github.repository }}/${{ github.repository }}.php\"></iframe>
             </body>
-          </html>" > github-pages/index.html
+          </html>" > build/index.html
 
       - name: Create Artifact
         uses: actions/upload-artifact@v2.2.4

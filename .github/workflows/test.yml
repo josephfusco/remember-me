@@ -82,13 +82,13 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 comment_id: workflowComment.id,
-                body: `The artifact is available to view as a webpage [here](${artifactURL}).`
+                body: `🚧 View these changes in [WordPress Playground](${artifactURL}).`
               });
             } else {
               await octokit.rest.issues.createComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: pullRequestNumber,
-                body: `The artifact is available to view as a webpage [here](${artifactURL}).`
+                body: `🚧 View these changes in [WordPress Playground](${artifactURL}).`
               });
             }

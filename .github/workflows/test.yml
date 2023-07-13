@@ -60,26 +60,16 @@ jobs:
             <body>
               <iframe src=\"https://playground.wordpress.net/remote.html?plugin=${{ github.repository }}/${{ github.repository }}.php\"></iframe>
             </body>
-          </html>" > build/index.html
-
-      - name: Publish Artifact as GitHub Pages
-        run: |
-          mv build public
-          touch public/.nojekyll
-          echo "/*" > public/.gitignore
-          echo "!/index.html" >> public/.gitignore
-          cd public
-          git init
-          git add .
-          git commit -m "Publish artifact"
-          git branch -m gh-pages
-          git push -f origin gh-pages
+          </html>" > github-pages/index.html
 
       - name: Create Artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: wordpress-playground
+          name: github-pages
           path: build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
 
       - name: Comment on Pull Request
         uses: actions/github-script@v5
@@ -102,10 +92,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 comment_id: workflowComment.id,
-                body: `
-                🚧 View these changes in [WordPress Playground](${artifactURL}).
-                
-                `
+                body: `🚧 View these changes in [WordPress Playground](${artifactURL}).`
               });
             } else {
               await octokit.rest.issues.createComment({

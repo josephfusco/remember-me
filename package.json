@@ -1,0 +1,23 @@
+{
+  "name": "remember-me",
+  "version": "1.0.0",
+  "description": "[![Packagist](https://img.shields.io/packagist/v/josephfusco/remember-me.svg?style=flat-square)](https://packagist.org/packages/josephfusco/remember-me)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josephfusco/remember-me.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josephfusco/remember-me/issues"
+  },
+  "homepage": "https://github.com/josephfusco/remember-me#readme",
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
+}

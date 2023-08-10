@@ -82,6 +82,9 @@ jobs:
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           publish_dir: ./build/${{ github.event.pull_request.number }}
+          publish_branch: gh-pages
+          commit_message: "Deploy changes from ${{ github.sha }}"
+          full_commit_message: "Deploy changes from ${{ github.sha }}"
 
       # Update the comment URL to point to the specific PR's directory
       - name: Comment on Pull Request

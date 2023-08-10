@@ -47,7 +47,7 @@ jobs:
       # Change build directory to be unique for each PR
       - name: Create index.html
         run: |
-          mkdir build/${{ github.event.pull_request.number }}
+          mkdir -p build/${{ github.event.pull_request.number }}
           touch build/${{ github.event.pull_request.number }}/index.html
 
       - name: Update index.html

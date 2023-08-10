@@ -102,7 +102,10 @@ jobs:
               repo: context.repo.repo,
               issue_number: pullRequestNumber
             });
-            const workflowComment = comments.find(comment => comment.user.login === 'github-actions[bot]' && comment.body.includes('The artifact is available to view as a webpage'));
+            
+            const botCommentIdentifier = '🚧 View these changes in';  // Use this to identify your bot's comment
+            const workflowComment = comments.find(comment => comment.user.login === 'github-actions[bot]' && comment.body.includes(botCommentIdentifier));
+
             if (workflowComment) {
               await octokit.rest.issues.updateComment({
                 owner: context.repo.owner,

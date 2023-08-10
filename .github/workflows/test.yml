@@ -75,11 +75,18 @@ jobs:
           path: build
 
       - name: Deploy to GitHub Pages
+<<<<<<< HEAD
         id: deployment
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages
           folder: build
+=======
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+>>>>>>> b219a104d0e668db4efc109432de9a6999c22fb4
 
       - name: Comment on Pull Request
         uses: actions/github-script@v5

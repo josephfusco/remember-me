@@ -90,8 +90,8 @@ jobs:
           script: |
             const { getOctokit } = require('@actions/github');
 
-            const artifactURL = `https://${context.repo.owner}.github.io/${context.repo.repo}/${pullRequestNumber}`;
             const pullRequestNumber = context.payload.pull_request.number;
+            const artifactURL = `https://${context.repo.owner}.github.io/${context.repo.repo}/${pullRequestNumber}`;
             const token = '${{ secrets.GH_TOKEN }}';
             const octokit = getOctokit(token);
             const { data: comments } = await octokit.rest.issues.listComments({

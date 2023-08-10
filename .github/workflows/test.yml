@@ -90,7 +90,7 @@ jobs:
           script: |
             const { getOctokit } = require('@actions/github');
 
-            const artifactURL = `https://${process.env.GITHUB_REPOSITORY.split('/')[0]}.github.io/${process.env.GITHUB_REPOSITORY.split('/')[1]}/${process.env.GITHUB_EVENT_PULL_REQUEST_NUMBER}`;
+            const artifactURL = `https://${context.repo.owner}.github.io/${context.repo.repo}/${pullRequestNumber}`;
             const pullRequestNumber = context.payload.pull_request.number;
             const token = '${{ secrets.GH_TOKEN }}';
             const octokit = getOctokit(token);

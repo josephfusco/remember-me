@@ -44,16 +44,17 @@ jobs:
       - name: Install @actions/github
         run: npm install @actions/github
 
+      # Change build directory to be unique for each PR
       - name: Create index.html
         run: |
-          mkdir build
-          touch build/index.html
+          mkdir build/${{ github.event.pull_request.number }}
+          touch build/${{ github.event.pull_request.number }}/index.html
 
       - name: Update index.html
         run: |
           echo "<!DOCTYPE html>
             <html>
-              <head>
+            <head>
                 <style>
                   body, html, iframe {
                     margin: 0;
@@ -61,32 +62,35 @@ jobs:
                     width: 100%;
                     border: none;
                   }
-              </style>
+                </style>
             </head>
             <body>
               <iframe src=\"https://playground.wordpress.net/remote.html?plugin=${{ github.repository }}/${{ github.repository }}.php\"></iframe>
             </body>
-          </html>" > build/index.html
+          </html>" > build/${{ github.event.pull_request.number }}/index.html
 
+      # Update the artifact name to be unique based on PR number
       - name: Create Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: github-pages
-          path: build
+          name: github-pages-${{ github.event.pull_request.number }}
+          path: build/${{ github.event.pull_request.number }}
 
+      # Update the publish directory to be unique based on PR number
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./build/${{ github.event.pull_request.number }}
 
+      # Update the comment URL to point to the specific PR's directory
       - name: Comment on Pull Request
         uses: actions/github-script@v5
         with:
           script: |
             const { getOctokit } = require('@actions/github');
 
-            const artifactURL = `https://${process.env.GITHUB_REPOSITORY.split('/')[0]}.github.io/${process.env.GITHUB_REPOSITORY.split('/')[1]}`;
+            const artifactURL = `https://${process.env.GITHUB_REPOSITORY.split('/')[0]}.github.io/${process.env.GITHUB_REPOSITORY.split('/')[1]}/${process.env.GITHUB_EVENT_PULL_REQUEST_NUMBER}`;
             const pullRequestNumber = context.payload.pull_request.number;
             const token = '${{ secrets.GH_TOKEN }}';
             const octokit = getOctokit(token);

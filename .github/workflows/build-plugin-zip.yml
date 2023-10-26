@@ -1,0 +1,31 @@
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # # Install Composer
+    # - name: Setup Composer
+    #   uses: shivammathur/setup-php@v2
+    #   with:
+    #     php-version: '8.0'
+    #     tools: composer:v2
+
+    # # Install Composer dependencies (production)
+    # - name: Install Composer dependencies (production)
+    #   run: composer install --no-dev --optimize-autoloader
+
+    # Create the ZIP file
+    - name: Create ZIP
+      run: zip -r remember-me.zip ./
+
+    # Expose the ZIP file as a downloadable artifact
+    - name: Upload ZIP as Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: remember-me
+        path: remember-me.zip

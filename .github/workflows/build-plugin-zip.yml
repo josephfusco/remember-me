@@ -21,7 +21,7 @@ jobs:
 
     # Create the ZIP file
     - name: Create ZIP
-      run: zip -r remember-me.zip remember-me/
+      run: zip -r remember-me.zip ./
 
     # Expose the ZIP file as a downloadable artifact
     - name: Upload ZIP as Artifact

@@ -1,3 +1,5 @@
+name: Build Plugin Zip
+
 on:
   pull_request:
 

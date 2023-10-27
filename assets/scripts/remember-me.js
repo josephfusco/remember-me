@@ -1,7 +1,5 @@
 ( function() {
 
-	alert('Remember me!');
-
 	var checkbox = document.getElementById( 'rememberme' );
 	var audio    = document.getElementById( 'remembermeaudio' );
 

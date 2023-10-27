@@ -1,5 +1,5 @@
 ( function() {
-
+	alert('Remember Me is Active!');
 	var checkbox = document.getElementById( 'rememberme' );
 	var audio    = document.getElementById( 'remembermeaudio' );
 
